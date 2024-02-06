@@ -5,6 +5,14 @@ from post_factory import PostFactory
 
 app = Flask(__name__)
 
+csp = {
+    'default-src': '\'self\''
+}
+# talisman = Talisman(app, content_security_policy=csp)
+
+# Enable Cross Origin Resource Sourcing (CORS) policies
+CORS(app, resources={"/*": {"origins": "http://localhost:3000"}})
+
 
 @app.route("/")
 def index():
